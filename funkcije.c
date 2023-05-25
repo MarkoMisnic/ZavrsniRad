@@ -4,12 +4,15 @@
 #include <time.h>
 #include "Header.h"
 
+//3
+
 typedef struct Character {
 	char* characterClass;
 	char* Gender;
 	char* Name;
 }Character;
 
+//3,9,14,4
 
 Character* createCharacter() {
 	Character* character = malloc(sizeof(Character));
@@ -57,3 +60,16 @@ Character* createCharacter() {
 	return character;
 
 }
+
+void saveCharacterToFile(Character* character) {
+	FILE* file = fopen("character.txt", "w");
+
+	if (file == NULL) {
+		printf("Error opening the file.\n");
+		return;
+	}
+	fprintf(file, "Character class:%s\n", character->characterClass);
+	fprintf(file, "Character gender:%s\n", character->Gender);
+
+	fclose(file);
+	printf("Character information has been saved to character.txt\n");
