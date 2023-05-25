@@ -73,3 +73,4 @@ void saveCharacterToFile(Character* character) {
 
 	fclose(file);
 	printf("Character information has been saved to character.txt\n");
+}
