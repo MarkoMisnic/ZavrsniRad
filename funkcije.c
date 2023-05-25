@@ -4,7 +4,7 @@
 #include <time.h>
 #include "Header.h"
 
-//3
+
 
 typedef struct Character {
 	char* characterClass;
