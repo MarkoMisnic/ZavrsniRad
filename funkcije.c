@@ -6,7 +6,8 @@
 
 
 
-//3,9,14,4
+
+//9,14,4
 
 Character* createCharacter() {
 	Character* character = malloc(sizeof(Character));
@@ -57,6 +58,7 @@ Character* createCharacter() {
 
 }
 
+
 void saveCharacterToFile(Character* character) {
 	FILE* file = fopen("character.txt", "w");
 
@@ -70,6 +72,7 @@ void saveCharacterToFile(Character* character) {
 	fclose(file);
 	printf("Character information has been saved to character.txt\n");
 }
+
 
 void Location(char** location) {
 
@@ -98,3 +101,4 @@ void Location(char** location) {
 
 
 }
+
