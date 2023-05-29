@@ -2,6 +2,8 @@
 #ifndef HEADER_H
 #define HEADER_H
 
+//3
+
 typedef struct Character {
 	char* characterClass;
 	char* Gender;
