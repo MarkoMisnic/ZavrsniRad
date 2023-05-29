@@ -9,5 +9,6 @@ typedef struct Character {
 
 Character* createCharacter();
 void saveCharacterToFile(Character* character);
+void Location(char** location);
 
 #endif
