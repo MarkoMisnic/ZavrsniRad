@@ -6,12 +6,6 @@
 
 
 
-typedef struct Character {
-	char* characterClass;
-	char* Gender;
-	char* Name;
-}Character;
-
 //3,9,14,4
 
 Character* createCharacter() {
