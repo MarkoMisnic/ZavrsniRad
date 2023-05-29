@@ -13,5 +13,7 @@ int main() {
 	saveCharacterToFile(character);
 	free(character);
 
+	Location(&Location);
+	
 	return 0;
 }
