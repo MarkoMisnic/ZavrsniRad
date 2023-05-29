@@ -30,6 +30,7 @@ Character* createCharacter() {
 	default:
 		printf("Invalid choice. Setting character class to Warrior by default.\n");
 		character->characterClass = "Warrior";
+		break;
 	}
 
 	printf("Choose your gender:\n");
@@ -49,6 +50,7 @@ Character* createCharacter() {
 	default:
 		printf("Invalid choice. Setting character gender to Male by default.\n");
 		character->characterClass = "Male";
+		break;
 	}
 
 	return character;
@@ -67,4 +69,32 @@ void saveCharacterToFile(Character* character) {
 
 	fclose(file);
 	printf("Character information has been saved to character.txt\n");
+}
+
+void Location(char** location) {
+
+	int locationChoice;
+
+	printf("Choose a location:\n");
+	printf("1. Mountain Village\n");
+	printf("2. Remote Castle\n");
+
+	printf("Enter your choice:\n");
+	scanf("%d", &locationChoice);
+
+	switch (locationChoice) {
+	case 1:
+		*location = "Mountain Village";
+		break;
+	case 2:
+		*location = "Remote Castle";
+		break;
+	default:
+		printf("Invalid choice. Setting location to Remote Castle by default.\n");
+		*location = "Remote Castle";
+		break;
+	}
+
+
+
 }
