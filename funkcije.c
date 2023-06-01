@@ -26,7 +26,7 @@ bool parseAndExecute(char* input) {
 	return true;
 }
 
-//Funkcije za lokaciju
+//Funkcije za lokaciju, struktura, korištenje pokazivača, 
 
 struct location {
 	const char* description;
