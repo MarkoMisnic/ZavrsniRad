@@ -4,6 +4,8 @@
 #include <string.h>
 #include "Header.h"
 
+//Funkcije za lokaciju, struktura, korištenje pokazivača, 
+
 struct location{
 	const char* description;
 	const char* tag;
