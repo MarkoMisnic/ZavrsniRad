@@ -1,19 +1,22 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#include <stdbool.h>
 #include <stdlib.h>
 #include <time.h>
 #include "Header.h"
 
+static char input[100] = "look around";
+static bool getInput(void) {
+	printf("n--> ");
+	return fgets(input, sizeof input, stdin) != NULL;
+}
+
+
 int main() {
-	Character* character = createCharacter();
-
-	printf("Character class: %s\n",character->characterClass);
-	printf("Character gender: %s\n", character->Gender);
-
-	saveCharacterToFile(character);
-	free(character);
-
-	Location(&Location);
-	
+	printf("Welcome to the adventure!\n");
+	while (parseAndExecute(input) && getInput());
+	printf("\n");
+	printf("\nBye!\n");
 	return 0;
+}
 }
