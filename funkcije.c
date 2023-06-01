@@ -4,7 +4,7 @@
 #include <string.h>
 #include "Header.h"
 
-//Funkcija za raščlaniti i izvršiti
+//Funkcija za raščlanjivanje stringa i izvršavanja naredbe
 
 bool parseAndExecute(char* input) {
 	char* verb = strtok(input, " \n");
