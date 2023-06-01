@@ -1,104 +1,126 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+#include <stdbool.h>
+#include <string.h>
 #include "Header.h"
 
+//Funkcija za raščlaniti i izvršiti
 
-
-
-//9,14,4
-
-Character* createCharacter() {
-	Character* character = malloc(sizeof(Character));
-
-
-	printf("Choose your class:\n");
-	printf("1. Warrior\n");
-	printf("2. Archer\n");
-
-	int classChoice;
-	printf("Pick a number.\n");
-	scanf("%d", &classChoice);
-
-	switch (classChoice) {
-	case 1:
-		character->characterClass = "Warrior";
-		break;
-	case 2:
-		character->characterClass = "Archer";
-		break;
-	default:
-		printf("Invalid choice. Setting character class to Warrior by default.\n");
-		character->characterClass = "Warrior";
-		break;
+bool parseAndExecute(char* input) {
+	char* verb = strtok(input, " \n");
+	char* noun = strtok(NULL, " \n");
+	if (verb != NULL) {
+		if (strcmp(verb, "quit") == 0) {
+			return false;
+		}
+		else if (strcmp(verb, "look") == 0) {
+			printf("\n");
+		}
+		else if (strcmp(verb, "go") == 0) {
+			printf("It's too dark to go anywhere.\n");
+		}
+		else {
+			printf("I don't know how to '%s'.\n", verb);
+		}
 	}
+	return true;
+}
 
-	printf("Choose your gender:\n");
-	printf("1. Male\n");
-	printf("2. Female\n");
+//Funkcije za lokaciju
 
-	int genderChoice;
-	scanf("%d", &genderChoice);
+struct location {
+	const char* description;
+	const char* tag;
+}locs[] = {
+	{"", ""}, {"", ""}
+};
 
-	switch (genderChoice) {
-	case 1:
-		character->Gender = "Male";
-		break;
-	case 2:
-		character->Gender = "Female";
-		break;
-	default:
-		printf("Invalid choice. Setting character gender to Male by default.\n");
-		character->characterClass = "Male";
-		break;
+#define numberOfLocations (sizeof locs / sizeof *locs)
+
+static unsigned locationOfPlayer = 0;
+
+void executeLook(const char* noun) {
+	if (noun != NULL && strcmp(noun, "around") == 0) {
+		printf("You are in %s.\n", player->location->description);
+		listObjectsAtLocation(player->location);
 	}
+	else {
+		printf("I don't understand what you want to see.\n");
+	}
+}
 
-	return character;
+void executeGo(const char* noun) {
+	OBJECT* obj = getVisible("Where you want to go", noun);
+	if (obj == NULL) {
+		//getVisible je ovo riješio
+	}
+	else if (obj->location == NULL && obj != player->location) {
+		printf("Ok.\n");
+		player->location = obj;
+		executeLook("around");
+	}
+	else {
+		printf("You can't get much closer than this.\n");
+	}
+}
+
+//Funkcije za objekte
+
+OBJECT objs[] = {
+	{"", "", NULL},
+	{"", "", NULL},
+	{"","",cave},
+	{"","",field},
+	{"","",field}
+};
+
+//Funkcije za imenice
+
+static bool objectHasTag(OBJECT* obj, const char* noun) {
+	return noun != NULL && *noun != '\0' && strcmp(noun, obj->tag) == 0;
 
 }
 
-
-void saveCharacterToFile(Character* character) {
-	FILE* file = fopen("character.txt", "w");
-
-	if (file == NULL) {
-		printf("Error opening the file.\n");
-		return;
+static OBJECT* getObject(const char* noun) {
+	OBJECT* obj, * res = NULL;
+	for (obj = objs; obj < endOfObjs; obj++) {
+		if (objectHasTag(obj, noun)) {
+			res = obj;
+		}
 	}
-	fprintf(file, "Character class:%s\n", character->characterClass);
-	fprintf(file, "Character gender:%s\n", character->Gender);
-
-	fclose(file);
-	printf("Character information has been saved to character.txt\n");
+	return res;
 }
 
-
-void Location(char** location) {
-
-	int locationChoice;
-
-	printf("Choose a location:\n");
-	printf("1. Mountain Village\n");
-	printf("2. Remote Castle\n");
-
-	printf("Enter your choice:\n");
-	scanf("%d", &locationChoice);
-
-	switch (locationChoice) {
-	case 1:
-		*location = "Mountain Village";
-		break;
-	case 2:
-		*location = "Remote Castle";
-		break;
-	default:
-		printf("Invalid choice. Setting location to Remote Castle by default.\n");
-		*location = "Remote Castle";
-		break;
+OBJECT* getVisible(const char* intention, const char* noun) {
+	OBJECT* obj = getObject(noun);
+	if (obj == NULL) {
+		printf("I don't understand %s.\n", intention);
 	}
-
-
-
+	else if (!(obj == player 
+		|| obj == player->location 
+		|| obj->location == player 
+		|| obj->location == player->location 
+		|| obj->location == NULL 
+		|| obj->location->location == player 
+		|| obj->location->location == player->location)) {
+		printf("You don't see any %s here.\n", noun);
+		obj = NULL;
+	}
+	return obj;
 }
 
+//Pomocna funkcija za printanje broja objekata u lokaciji
+
+int listObjectsAtLocation(OBJECT* location) {
+	int count = 0;
+	OBJECT* obj;
+	for (obj = objs; obj < endOfObjs; obj++) {
+		if (obj != player && obj->location == location) {
+			if (count++ == 0) {
+				printf("You see:\n");
+			}
+			printf("%s\n", obj->description);
+		}
+	}
+	return count;
+}
