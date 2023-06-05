@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include "objekti.h"
 
+//10
+
 bool isHolding(OBJECT* container, OBJECT* obj)
 {
     return obj != NULL && obj->location == container;
