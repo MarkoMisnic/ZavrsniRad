@@ -3,6 +3,8 @@
 #include "objekti.h"
 #include "kretnja.h"
 
+//10
+
 void executeGet(const char* noun)
 {
     OBJECT* obj = getVisible("what you want to get", noun);
