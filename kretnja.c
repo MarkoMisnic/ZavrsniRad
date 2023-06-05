@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include "objekti.h"
 
+//4
+
 static void describeMove(OBJECT* obj, OBJECT* to)
 {
     if (to == player->location)
