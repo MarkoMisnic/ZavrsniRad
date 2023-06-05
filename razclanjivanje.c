@@ -5,6 +5,8 @@
 #include "lokacije.h"
 #include "spremnik.h"
 
+//4,5
+
 bool parseAndExecute(char* input)
 {
     char* verb = strtok(input, " \n");
