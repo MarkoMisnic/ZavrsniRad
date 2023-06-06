@@ -3,7 +3,7 @@
 #include <string.h>
 #include "objekti.h"
 
-//1,2,3,4,5
+//  1,2,3,4,5
 
 static bool objectHasTag(OBJECT* obj, const char* noun)
 {
