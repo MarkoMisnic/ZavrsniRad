@@ -3,7 +3,9 @@
 #include "objekti.h"
 #include "kretnja.h"
 
+
 //10
+
 
 void executeGet(const char* noun)
 {
