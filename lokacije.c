@@ -3,7 +3,7 @@
 #include <string.h>
 #include "objekti.h"
 
-//4,5,6
+//  4,5,6
 
 struct location {
     const char* description;
