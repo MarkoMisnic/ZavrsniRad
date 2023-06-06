@@ -3,8 +3,10 @@
 #include <stdio.h>
 #include "razclanjivanje.h"
 
+
 static char input[100] = "look around";
 static bool getInput(void)
+	
 {
 	printf("\n--> ");
 	return fgets(input, sizeof input, stdin) != NULL;
