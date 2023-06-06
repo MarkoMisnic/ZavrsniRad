@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "objekti.h"
 
-//  4
+//   4
 
 static void describeMove(OBJECT* obj, OBJECT* to)
 {
