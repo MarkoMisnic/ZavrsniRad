@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include "objekti.h"
 
+
 //  4,5
+
 
 OBJECT objs[] = {
    {"an open field"  , "field"   , NULL , NULL  },
