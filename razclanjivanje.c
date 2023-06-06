@@ -5,7 +5,7 @@
 #include "lokacije.h"
 #include "spremnik.h"
 
-//4,5
+//  4,5
 
 bool parseAndExecute(char* input)
 {
