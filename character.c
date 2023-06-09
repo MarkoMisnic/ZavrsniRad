@@ -1,6 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-#include "character.h"
+#include "charLoc.h"
 
 Character createCharacter() {
     Character character;
@@ -9,7 +9,7 @@ Character createCharacter() {
     printf("Choose a character class:\n");
     printf("1. Warrior\n");
     printf("2. Archer\n");
-    scanf_s("%d", &classChoice);
+    scanf("%d", &classChoice);
 
     switch (classChoice) {
     case 1:
@@ -27,7 +27,7 @@ Character createCharacter() {
     printf("Choose a gender:\n");
     printf("1. Male\n");
     printf("2. Female\n");
-    scanf_s("%d", &genderChoice);
+    scanf("%d", &genderChoice);
 
     switch (genderChoice) {
     case 1:
@@ -43,7 +43,7 @@ Character createCharacter() {
     }
 
     printf("Enter the character's name: ");
-    scanf_s("%s", character.name);
+    scanf("%s", character.name);
 
     return character;
 }
