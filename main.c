@@ -5,14 +5,12 @@
 #include "quest.h"
 #include "combat.h"
 
-
 int main() {
     Character myCharacter = createCharacter();
     saveCharacterToFile(myCharacter);
 
     Direction directions[] = { NORTH, NORTHEAST, EAST, SOUTHEAST, SOUTH, SOUTHWEST, WEST, NORTHWEST };
     int numDirections = sizeof(directions) / sizeof(directions[0]);
-
 
     Direction chosenDirection = chooseDirection();
     saveLocationToFile(chosenDirection);
@@ -30,9 +28,11 @@ int main() {
 
         destroyCombatant(&player);
         destroyCombatant(&enemy);
-    }
-    else {
-        checkLocation(chosenDirection);
+    } else {
+        printf("There's nothing here.\n");
+        printf("Returning to the starting position...\n");
+        chosenDirection = chooseDirection();
+        saveLocationToFile(chosenDirection);
     }
 
     return 0;
