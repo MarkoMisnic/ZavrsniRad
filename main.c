@@ -21,7 +21,7 @@ int main() {
         printf("You have reached a desolate house in the North.\n");
         activateQuest(myCharacter);
 
-        /*Combatant* player = createCombatant(myCharacter.name, 100, 20, 10);
+        Combatant* player = createCombatant(myCharacter.name, 100, 20, 10);
         Combatant* enemy = createCombatant("Goblin", 80, 15, 5);
 
         if (player != NULL && enemy != NULL) {
@@ -29,7 +29,7 @@ int main() {
         }
 
         destroyCombatant(&player);
-        destroyCombatant(&enemy);*/
+        destroyCombatant(&enemy);
     }
     else {
         checkLocation(chosenDirection);
