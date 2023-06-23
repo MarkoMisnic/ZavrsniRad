@@ -81,6 +81,8 @@ void saveCharacterToFile(Character character) {
         break;
     }
 
+    fseek(file, 0, SEEK_END);
+
     fclose(file);
     printf("Character details saved to character.txt.\n");
 }

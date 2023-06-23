@@ -1,5 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "charLoc.h"
 
 const char* directionToString(Direction direction) {
@@ -35,13 +37,19 @@ Direction chooseDirection() {
     }
 
     int choice;
+    char stringChoice[50];
     printf("Enter the number corresponding to your choice: ");
-    scanf_s("%d", &choice);
+
+    choice = atoi(stringChoice);    
+    scanf("%49s", stringChoice);
+
 
     if (choice >= 1 && choice <= numDirections) {
         return directions[choice - 1];
     }
     else {
+        printf("You fainted after you got too scared of making a choice were to go and after you woke up you realised where you wanted to go, which is North.\n");
+        printf("\n");
         return NORTH;
     }
 }
