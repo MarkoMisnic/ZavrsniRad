@@ -30,7 +30,6 @@ Combatant* createCombatant(const char* name, int health, int attack, int defense
 }
 
 void destroyCombatant(Combatant** combatant) {
-    Character myCharacter = createCharacter();
     if (combatant != NULL && *combatant != NULL) {
         free((*combatant)->name);
         free(*combatant);
