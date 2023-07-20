@@ -51,38 +51,19 @@ Character createCharacter() {
     return character;
 }
 
-void saveCharacterToFile(Character character) {
-    FILE* file = fopen("character.txt", "w");
+void saveCharactersToFile(Character characters[], int count) {
+    FILE* file = fopen("characters.txt", "a"); 
     if (file == NULL) {
-        printf("Failed to open the file for writing.\n");
+        printf("Error opening the file.\n");
         return;
     }
 
-    fprintf(file, "Character Details:\n");
-    fprintf(file, "Name: %s\n", character.name);
-
-    fprintf(file, "Class: ");
-    switch (character.class) {
-    case WARRIOR:
-        fprintf(file, "Warrior\n");
-        break;
-    case ARCHER:
-        fprintf(file, "Archer\n");
-        break;
+    for (int i = 0; i < count; i++) {
+        fprintf(file, "Name: %s\n", characters[i].name);
+        fprintf(file, "Class: %s\n", characters[i].class == WARRIOR ? "Warrior" : "Archer");
+        fprintf(file, "Gender: %s\n", characters[i].gender == MALE ? "Male" : "Female");
+        fprintf(file, "\n");
     }
-
-    fprintf(file, "Gender: ");
-    switch (character.gender) {
-    case MALE:
-        fprintf(file, "Male\n");
-        break;
-    case FEMALE:
-        fprintf(file, "Female\n");
-        break;
-    }
-
-    fseek(file, 0, SEEK_END);
 
     fclose(file);
-    printf("Character details saved to character.txt.\n");
 }

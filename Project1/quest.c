@@ -5,20 +5,74 @@
 #include "charLoc.h"
 #include "combat.h"
 
-void activateQuest(Character character) {
-    printf("Old Woman: Listen carefully, %s. I am not just an old woman. I am a powerful witch!\n", character.name);
-    printf("Old Woman: My magic circlet, which preserves my youth, has been stolen by a wicked monster.\n");
-    printf("Old Woman: It has caused me to age rapidly. I need you to retrieve it for me.\n");
-    printf("I will teleport you to the beasts lair to fight him, get ready!\n");
-    printf("You are in the lair. Good luck!\n");
-}
+void startQuest() {
+    FILE* file;
+    char line[256];
 
-
-    void endQuest(Character character) {
-
-
-        printf("Congratulations! You have defeated the monster and retrieved the magic circlet.\n");
-        printf("Old Woman: Thank you, %s. You have saved me from this dreadful fate.\n", character.name);
-        printf("Old Woman: As a token of my gratitude, I offer you a reward.\n");
+    file = fopen("questStart.txt", "r");
+    if (file == NULL) {
+        printf("Error opening the file.\n");
+        return;
     }
 
+    while (fgets(line, sizeof(line), file)) {
+        printf("%s", line);
+    }
+
+    fclose(file);
+    return 0;
+}
+
+void midQuest() {
+    FILE* file;
+    char line[256];
+
+    file = fopen("questMid.txt", "r");
+    if (file == NULL) {
+        printf("Error opening the file.\n");
+        return;
+    }
+
+    while (fgets(line, sizeof(line), file)) {
+        printf("%s", line);
+    }
+
+    fclose(file);
+    return 0;
+}
+
+void endQuest() {
+    FILE* file;
+    char line[256];
+
+    file = fopen("questEnd.txt", "r");
+    if (file == NULL) {
+        printf("Error opening the file.\n");
+        return;
+    }
+
+    while (fgets(line, sizeof(line), file)) {
+        printf("%s", line);
+    }
+
+    fclose(file);
+    return 0;
+}
+
+void wrongPlace() {
+    FILE* file;
+    char line[256];
+
+    file = fopen("wrongPlacelol.txt", "r");
+    if (file == NULL) {
+        printf("Error opening the file.\n");
+        return;
+    }
+
+    while (fgets(line, sizeof(line), file)) {
+        printf("%s", line);
+    }
+
+    fclose(file);
+    return 0;
+} 

@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "charLoc.h"
+#include "quest.h"
 
 const char* directionToString(Direction direction) {
     switch (direction) {
@@ -48,31 +49,7 @@ Direction chooseDirection() {
         return directions[choice - 1];
     }
     else {
-        printf("You fainted after you got too scared of making a choice were to go and after you woke up you realised where you wanted to go, which is North.\n");
-        printf("\n");
+        wrongPlace;
         return NORTH;
     }
 }
-
-void saveLocationToFile(Direction location) {
-    FILE* file = fopen("character.txt", "a");
-    if (file == NULL) {
-        printf("Failed to open the file for writing.\n");
-        return;
-    }
-
-    fprintf(file, "Location: %s\n", directionToString(location));
-
-    fclose(file);
-}
-
-//void checkLocation(Direction chosenDirection) {
-//    if (chosenDirection != NORTH) {
-//        printf("There's nothing there. You return to the starting position.\n");
-//        printf("When you returned to your starting position you saw a flash of light in the distance, you decided to go the direction of the light which flashed in the North.\n");
-//        printf("\n");
-//        printf("\n");
-//        Direction newDirection = chooseDirection();
-//        saveLocationToFile(newDirection);
-//    }
-//}

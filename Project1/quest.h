@@ -2,8 +2,9 @@
 #ifndef QUEST_H
 #define QUEST_H
 
-void activateQuest(myCharacter);
-void endQuest(myCharacter);
-void manageFile();
+void startQuest();
+void midQuest();
+void endQuest();
+void wrongPlace();
 
 #endif

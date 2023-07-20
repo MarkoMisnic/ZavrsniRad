@@ -21,7 +21,7 @@ typedef struct {
 } Character;
 
 Character createCharacter();
-void saveCharacterToFile(Character character);
+void saveCharactersToFile(Character characters[], int count);
 
 //LOCATION_H
 
@@ -38,7 +38,5 @@ typedef enum {
 
 const char* directionToString(Direction direction);
 Direction chooseDirection();
-void saveLocationToFile(Direction location);
-void checkLocation(Direction chosenDirection);
 
 #endif 
